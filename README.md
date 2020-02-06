@@ -48,17 +48,17 @@ You can create 2 extra sensors which hold the type of garbage to pickup today an
       afval_vandaag:
         friendly_name: 'Vandaag'
         value_template: >-
-          {% if is_state_attr('sensor.cyclus_nv_gft', 'day', 'Vandaag') %}
-          {% set gft = 'Groene Bak' %}
+          {% if is_state_attr('sensor.cyclusnv_gft', 'day', 'Vandaag') %}
+          {% set gft = 'Groene bak' %}
           {% endif %}
-          {% if is_state_attr('sensor.cyclus_nv_papier', 'day', 'Vandaag') %}
-          {% set papier = 'Blauwe Bak' %}
+          {% if is_state_attr('sensor.cyclusnv_papier', 'day', 'Vandaag') %}
+          {% set papier = 'Oud papier' %}
           {% endif %}
-          {% if is_state_attr('sensor.cyclus_nv_plastic', 'day', 'Vandaag') %}
+          {% if is_state_attr('sensor.cyclusnv_plastic', 'day', 'Vandaag') %}
           {% set plastic = 'Plastic' %}
           {% endif %}
-          {% if is_state_attr('sensor.cyclus_nv_restafval', 'day', 'Vandaag') %}
-          {% set restafval = 'Grijze Bak' %}
+          {% if is_state_attr('sensor.cyclusnv_restafval', 'day', 'Vandaag') %}
+          {% set restafval = 'Grijze bak' %}
           {% endif %}
              {{gft}} {{papier}} {{plastic}} {{restafval}}
 
@@ -67,16 +67,16 @@ You can create 2 extra sensors which hold the type of garbage to pickup today an
       afval_morgen:
         friendly_name: 'Morgen'
         value_template: >-
-          {% if is_state_attr('sensor.cyclus_nv_gft', 'day', 'Morgen') %}
-          {% set gft = 'Groene Bak' %}
-          {% elif is_state_attr('sensor.cyclus_nv_papier', 'day', 'Morgen') %}
-          {% set papier = 'Blauwe Bak' %}
-          {% if is_state_attr('sensor.cyclus_nv_plastic', 'day', 'Morgen') %}
+          {% if is_state_attr('sensor.cyclusnv_gft', 'day', 'Morgen') %}
+          {% set gft = 'Groene bak' %}
+          {% elif is_state_attr('sensor.cyclusnv_papier', 'day', 'Morgen') %}
+          {% set papier = 'Oud papier' %}
+          {% if is_state_attr('sensor.cyclusnv_plastic', 'day', 'Morgen') %}
           {% set plastic = 'Plastic' %}
           {% endif %}
-          {% if is_state_attr('sensor.cyclus_nv_restafval', 'day', 'Morgen') %}
+          {% if is_state_attr('sensor.cyclusnv_restafval', 'day', 'Morgen') %}
           {% endif %}
-          {% set restafval = 'Grijze Bak' %}
+          {% set restafval = 'Grijze bak' %}
           {% endif %}
              {{gft}} {{papier}} {{plastic}} {{restafval}}
 ```
@@ -84,10 +84,10 @@ You can create 2 extra sensors which hold the type of garbage to pickup today an
 And you can group them like so:
 ```
 Afval Ophaaldagen:
-  - sensor.cyclus_nv_gft
-  - sensor.cyclus_nv_papier
-  - sensor.cyclus_nv_plastic
-  - sensor.cyclus_nv_restafval
+  - sensor.cyclusnv_gft
+  - sensor.cyclusnv_papier
+  - sensor.cyclusnv_plastic
+  - sensor.cyclusnv_restafval
   - sensor.afval_vandaag
   - sensor.afval_morgen
 ```
