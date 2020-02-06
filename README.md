@@ -1,20 +1,20 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)  [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/cyberjunkynl/)
 
-# HVC Groep Sensor Component
-This is a Custom Component for Home-Assistant (https://home-assistant.io), it fetches garbage pickup dates for parts of The Netherlands using HVC Groep's REST API.
+# Cyclus NV Sensor Component
+This is a Custom Component for Home-Assistant (https://home-assistant.io), it fetches garbage pickup dates for parts of The Netherlands using Cyclus NV's REST API.
 
 
 ## Installation
 
 ### HACS - Recommended
 - Have [HACS](https://hacs.xyz) installed, this will allow you to easily manage and track updates.
-- Search for 'HVCGroep'.
+- Search for 'cyclusnv'.
 - Click Install below the found integration.
 - Configure using the configuration instructions below.
 - Restart Home-Assistant.
 
 ### Manual
-- Copy directory `custom_components/hvcgroep` to your `<config dir>/custom_components` directory.
+- Copy directory `custom_components/cyclusnv` to your `<config dir>/custom_components` directory.
 - Configure with config below.
 - Restart Home-Assistant.
 
@@ -25,7 +25,7 @@ To use this component in your installation, add the following to your `configura
 # Example configuration.yaml entry
 
 sensor:
-  - platform: hvcgroep
+  - platform: cyclusnv
     postcode: 1234AB
     huisnummer: 1
     resources:
