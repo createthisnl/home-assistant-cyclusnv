@@ -1,1 +1,1 @@
-"""The hvcgroep component."""
+"""The Cyclus NV component."""
