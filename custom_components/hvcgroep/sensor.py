@@ -1,10 +1,10 @@
 """
-Support for reading trash pickup dates for HVC groep areas.
+Support for reading trash pickup dates for Cyclus NV areas.
 
 configuration.yaml
 
 sensor:
-  - platform: hvcgroep
+  - platform: cyclusnv
     postcode: 1234AB
     huisnummer: 1
     resources:
@@ -27,13 +27,13 @@ from homeassistant.const import (
 from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle
 
-BAGID_URL = 'https://apps.hvcgroep.nl/rest/adressen/{0}-{1}'
-WASTE_URL = 'https://apps.hvcgroep.nl/rest/adressen/{0}/afvalstromen'
+BAGID_URL = 'https://afvalkalender.cyclusnv.nl/rest/adressen/{0}-{1}'
+WASTE_URL = 'https://afvalkalender.cyclusnv.nl/rest/adressen/{0}/afvalstromen'
 _LOGGER = logging.getLogger(__name__)
 
 MIN_TIME_BETWEEN_UPDATES = timedelta(hours=1)
 
-DEFAULT_NAME = 'HVC Groep'
+DEFAULT_NAME = 'Cyclus NV'
 CONST_POSTCODE = "postcode"
 CONST_HUISNUMMER = "huisnummer"
 
@@ -55,7 +55,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
-    """Setup the HVCGroep sensors."""
+    """Setup the Cyclus NV sensors."""
 
     scan_interval = config.get(CONF_SCAN_INTERVAL)
     postcode = config.get(CONST_POSTCODE)
@@ -66,7 +66,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     try:
         await data.async_update()
     except ValueError as err:
-        _LOGGER.error("Error while fetching data from HVCGroep: %s", err)
+        _LOGGER.error("Error while fetching data from Cyclus NV: %s", err)
         return
 
     entities = []
@@ -76,7 +76,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
         id = TRASH_TYPES[resource][0]
         icon = TRASH_TYPES[resource][2]
 
-        _LOGGER.debug("Adding HVCGroep sensor: {}, {}, {}, {}".format(trash_type, name, id, icon))
+        _LOGGER.debug("Adding Cyclus NV sensor: {}, {}, {}, {}".format(trash_type, name, id, icon))
         entities.append(TrashSensor(data, trash_type, name, id, icon))
 
     async_add_entities(entities, True)
@@ -84,7 +84,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 
 # pylint: disable=abstract-method
 class TrashData(object):
-    """Handle HVCGroep object and limit updates."""
+    """Handle Cyclus NV object and limit updates."""
 
     def __init__(self, postcode, huisnummer):
         """Initialize."""
@@ -99,7 +99,7 @@ class TrashData(object):
             self._bagid = json_data[0]["bagId"]
             _LOGGER.debug("Found BagId = %s", self._bagid)
         except (requests.exceptions.RequestException) as error:
-            _LOGGER.error("Unable to get BagId from HVCGroep: %s", error)
+            _LOGGER.error("Unable to get BagId from Cyclus NV: %s", error)
     
     def _build_bagid_url(self):
         """Build the URL for the requests."""
@@ -128,7 +128,7 @@ class TrashData(object):
             json_data = requests.get(self._build_waste_url(), timeout=5).json()
             _LOGGER.debug("Afvalstromen fetched data = %s", json_data)
         except requests.exceptions.RequestException:
-            _LOGGER.error("Unable to get afvalstromen data from HVCGroep: %s", error)
+            _LOGGER.error("Unable to get afvalstromen data from Cyclus NV: %s", error)
             self._data = None
             return False
 
@@ -150,7 +150,7 @@ class TrashData(object):
 
 
 class TrashSensor(Entity):
-    """Representation of a HVCGroep Sensor."""
+    """Representation of a Cyclus NV Sensor."""
 
     def __init__(self, data, trash_type, name, id, icon):
         """Initialize the sensor."""
