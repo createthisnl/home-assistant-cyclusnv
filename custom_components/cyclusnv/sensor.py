@@ -33,16 +33,16 @@ _LOGGER = logging.getLogger(__name__)
 
 MIN_TIME_BETWEEN_UPDATES = timedelta(hours=1)
 
-DEFAULT_NAME = 'Cyclus NV'
+DEFAULT_NAME = 'CyclusNV'
 CONST_POSTCODE = "postcode"
 CONST_HUISNUMMER = "huisnummer"
 
 # Predefined types and id's
 TRASH_TYPES = {
-    'gft': [5, 'Groene Bak GFT', 'mdi:food-apple-outline'],
-    'plastic': [6, 'Plastic en Verpakking', 'mdi:recycle'],
-    'papier': [3, 'Blauwe Bak Papier', 'mdi:file'],
-    'restafval': [2, 'Grijze Bak Restafval', 'mdi:delete-empty'],
+    'gft': [1, 'Groene bak GFT', 'mdi:food-apple-outline'],
+    'plastic': [14, 'Plastic en drankenkartons', 'mdi:recycle'],
+    'papier': [3, 'Oud papier', 'mdi:file'],
+    'restafval': [2, 'Grijze bak Restafval', 'mdi:delete-empty'],
 }
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
@@ -190,7 +190,7 @@ class TrashSensor(Entity):
 
         await self._data.async_update()
         if not self._data:
-            _LOGGER.error("Didn't receive data from TOON")
+            _LOGGER.error("Didn't receive data from Cyclus NV")
             return
 
         trashdata = self._data.latest_data
