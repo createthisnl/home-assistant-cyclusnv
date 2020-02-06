@@ -1,17 +1,10 @@
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)  [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
 # Cyclus NV Sensor Component
 This is a Custom Component for Home-Assistant (https://home-assistant.io), it fetches garbage pickup dates for parts of The Netherlands using Cyclus NV's REST API. Based on Cyberjunkys' HVC Groep sensor. Tested for region Krimpenerwaard.
 
 
 ## Installation
-
-### HACS - Recommended
-- Have [HACS](https://hacs.xyz) installed, this will allow you to easily manage and track updates.
-- Search for 'cyclusnv'.
-- Click Install below the found integration.
-- Configure using the configuration instructions below.
-- Restart Home-Assistant.
 
 ### Manual
 - Copy directory `custom_components/cyclusnv` to your `<config dir>/custom_components` directory.
