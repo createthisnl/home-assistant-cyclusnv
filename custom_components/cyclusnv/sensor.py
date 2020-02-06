@@ -40,7 +40,7 @@ CONST_HUISNUMMER = "huisnummer"
 # Predefined types and id's
 TRASH_TYPES = {
     'gft': [1, 'Groene bak GFT', 'mdi:food-apple-outline'],
-    'plastic': [14, 'Plastic en drankenkartons', 'mdi:recycle'],
+    'plastic': [464, 'Plastic en drankenkartons', 'mdi:recycle'],
     'papier': [3, 'Oud papier', 'mdi:file'],
     'restafval': [2, 'Grijze bak Restafval', 'mdi:delete-empty'],
 }
