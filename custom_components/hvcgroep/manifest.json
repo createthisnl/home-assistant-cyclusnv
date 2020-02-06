@@ -1,10 +1,11 @@
 {
-  "domain": "hvcgroep",
-  "name": "HVCGroep Sensor",
-  "documentation": "https://github.com/cyberjunky/home-assistant-hvcgroep",
+  "domain": "cyclusnv",
+  "name": "Cyclus NV Sensor",
+  "documentation": "https://github.com/createthisnl/home-assistant-cyclusnv/",
   "requirements": [],
   "dependencies": [],
   "codeowners": [
-    "@cyberjunky"
+    "@cyberjunky",
+    "@createthisnl"
   ]
 }
